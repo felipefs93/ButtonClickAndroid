@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button myButton;
     private TextView myTextView;
+    private int numTimesClicked = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +40,16 @@ public class MainActivity extends AppCompatActivity {
         View.OnClickListener buttonClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                myTextView.setText("Button was clicked.");
+                numTimesClicked = numTimesClicked + 1;
+                String result = "Button was clicked " + numTimesClicked + " time";
+                if (numTimesClicked == 1){
+                    myTextView.setText(result + ".");
+                }else {
+                    myTextView.setText(result + "s.");
+                }
             }
-        }
+        };
+        myButton.setOnClickListener(buttonClickListener);
     }
 
     @Override
